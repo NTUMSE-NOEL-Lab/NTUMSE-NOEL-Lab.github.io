@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="meta.title">實驗室首頁 | Lab Home</title>
+  <meta name="description" content="實驗室首頁，包含最新消息、教授簡介、研究方向、論文著述、實驗室成員、畢業學長姊、照片分享、連結。" data-i18n-attr="content:meta.description" />
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    :root { --bg:#ffffff; --fg:#0f172a; --muted:#64748b; --brand:#2563eb; --brand-weak:#dbeafe; --card:#f8fafc; --border:#e2e8f0; --shadow:0 10px 25px rgba(2,6,23,.08);} 
+    @media (prefers-color-scheme: dark){ :root{ --bg:#0b1020; --fg:#e5e7eb; --muted:#94a3b8; --brand:#60a5fa; --brand-weak:#0b2a5e; --card:#0f162d; --border:#1e293b; --shadow:0 10px 25px rgba(0,0,0,.45);} }
+    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Noto Sans,"Helvetica Neue",Arial; background:var(--bg); color:var(--fg); line-height:1.6}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .nav{position:sticky;top:0;z-index:50;backdrop-filter:saturate(120%) blur(8px);background:color-mix(in srgb, var(--bg) 80%, transparent);border-bottom:1px solid var(--border)}
+    .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 20px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800}
+    .brand-mark{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,var(--brand),#22c55e);box-shadow:var(--shadow)}
+    .nav-links{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+    .nav-links a{padding:8px 10px;border-radius:10px;color:var(--fg)}
+    .nav-links a:hover{background:var(--brand-weak);text-decoration:none}
+    .lang-switch{margin-left:10px;display:flex;gap:8px}
+    .lang-switch button{font-size:14px;padding:4px 8px;border-radius:6px;border:1px solid var(--border);background:transparent;color:var(--fg);cursor:pointer}
+    .lang-switch button.active{background:var(--brand-weak)}
+
+    .hero{max-width:1100px;margin:24px auto 0;padding:32px 20px 8px;display:grid;grid-template-columns:1.25fr 1fr;gap:24px;align-items:center}
+    .hero h1{font-size:clamp(28px,4vw,44px);margin:0 0 10px}
+    .hero p{color:var(--muted);margin:0 0 18px}
+    .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-block;padding:10px 14px;border-radius:12px;font-weight:600;border:1px solid var(--border);background:var(--brand);color:#fff;box-shadow:var(--shadow)}
+    .btn.alt{background:transparent;color:var(--fg)}
+    .cardish{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px;box-shadow:var(--shadow)}
+
+    .section{max-width:1100px;margin:24px auto;padding:0 20px}
+    .section h2{margin:0 0 12px;font-size:clamp(22px,3vw,28px)}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+
+    footer{margin-top:40px;border-top:1px solid var(--border)}
+    .footer-inner{max-width:1100px;margin:0 auto;padding:16px 20px 40px;color:var(--muted);font-size:14px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="nav" aria-label="Primary">
+    <div class="nav-inner">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <a href="#" class="brand-name" data-i18n="brand">實驗室首頁</a>
+      </div>
+      <div class="nav-links">
+        <a href="News.html" data-i18n="nav.news">最新消息</a>
+        <a href="Professor.html" data-i18n="nav.professor">教授簡介</a>
+        <a href="Research.html" data-i18n="nav.research">研究領域</a>
+        <a href="Publications.html" data-i18n="nav.publications">論文著述</a>
+        <a href="members.html" data-i18n="nav.members">實驗室成員</a>
+        <a href="Alumni.html" data-i18n="nav.alumni">畢業學長姊</a>
+        <a href="Photos.html" data-i18n="nav.photos">照片分享</a>
+        <a href="Links.html" data-i18n="nav.links">相關連結</a>
+        <div class="lang-switch" role="group" aria-label="Language switch">
+          <button type="button" id="btn-en" data-lang="en" aria-pressed="false">EN</button>
+          <button type="button" id="btn-zh" data-lang="zh" aria-pressed="true">中文</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div>
+      <h1 data-i18n="hero.title">歡迎來到本實驗室</h1>
+      <p data-i18n="hero.blurb">我們專注於先進材料、光子學與元件研究。在此可查閱最新<strong>消息</strong>、認識<strong>教授</strong>、了解<strong>研究方向</strong>、瀏覽<strong>論文發表</strong>、查看<strong>成員</strong>與<strong>畢業學長姊</strong>、欣賞<strong>照片集</strong>，以及實用<strong>連結</strong>。</p>
+      <div class="cta">
+        <a class="btn" href="research.html" data-i18n="hero.cta1">探索研究</a>
+        <a class="btn alt" href="publications.html" data-i18n="hero.cta2">瀏覽論文</a>
+      </div>
+    </div>
+    <div class="cardish">
+      <h3 style="margin-top:0" data-i18n="hero.highlightTitle">最新焦點</h3>
+      <p style="margin:8px 0 0;color:var(--muted)" data-i18n="hero.highlightText">在此放置重點訊息，例如「我們的太赫茲光偵測研究登上 <em>Advanced Materials</em>」。</p>
+    </div>
+  </header>
+
+  <!-- NEWS PREVIEW -->
+  <section class="section">
+    <h2 data-i18n="news.title">最新消息</h2>
+    <div class="cardish" data-i18n="news.item1">2025-09-15：恭喜團隊論文被期刊錄用！</div>
+    <div class="cardish" data-i18n="news.item2">2025-08-30：歡迎新加入的研究生！</div>
+  </section>
+
+  <!-- QUICK LINKS -->
+  <section class="section">
+    <h2 data-i18n="quick.title">快速連結</h2>
+    <div class="grid">
+      <div class="cardish"><h3 data-i18n="quick.profTitle">教授簡介</h3><p data-i18n="quick.profText">教授簡介與聯絡方式。</p><p><a href="professor.html" data-i18n="quick.more">更多 →</a></p></div>
+      <div class="cardish"><h3 data-i18n="quick.resTitle">研究領域</h3><p data-i18n="quick.resText">目前進行中的研究計畫與重點。</p><p><a href="research.html" data-i18n="quick.more">更多 →</a></p></div>
+      <div class="cardish"><h3 data-i18n="quick.pubTitle">論文著述</h3><p data-i18n="quick.pubText">期刊論文、會議論文與數據集。</p><p><a href="publications.html" data-i18n="quick.more">更多 →</a></p></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div data-i18n="footer.copyright">© <span id="year"></span> 實驗室名稱 · 版權所有</div>
+      <div data-i18n="footer.contact">聯絡信箱：<a href="mailto:lab@example.com">lab@example.com</a></div>
+    </div>
+  </footer>
+
+  <script>
+  // --- Translations ---
+  const I18N = {
+    en: {
+      'meta.title': 'Lab Home | Laboratory Homepage',
+      'meta.description': 'Laboratory homepage with News, Professor, Research, Publications, Members, Alumni, Photos, Links.',
+      brand: 'Lab Home',
+      nav: { news:'News', professor:'Professor', research:'Research', publications:'Publications', members:'Members', alumni:'Alumni', photos:'Photos', links:'Links' },
+      hero: {
+        title: 'Welcome to Our Laboratory',
+        blurb: 'We explore advanced materials, photonics, and devices. Find the latest <strong>News</strong>, learn about our <strong>Professor</strong>, ongoing <strong>Research</strong>, recent <strong>Publications</strong>, our <strong>Members</strong> & <strong>Alumni</strong>, photo <strong>Gallery</strong>, and useful <strong>Links</strong>.',
+        cta1: 'Explore Research', cta2: 'View Publications',
+        highlightTitle: 'Latest Highlight',
+        highlightText: 'Add a short spotlight here, e.g., “Our THz detector paper accepted by <em>Advanced Materials</em>.”'
+      },
+      news: { title:'News', item1:'2025-09-15: Paper accepted — congratulations to the team!', item2:'2025-08-30: Welcome new graduate students!' },
+      quick: {
+        title:'Quick Links', profTitle:'Professor', profText:'PI bio and contact.', resTitle:'Research', resText:'Current projects and focus areas.', pubTitle:'Publications', pubText:'Peer‑reviewed papers and datasets.', more:'More →'
+      },
+      footer: { copyright:'© <span id="year"></span> Your Lab Name · All rights reserved', contact:'Contact: <a href="mailto:lab@example.com">lab@example.com</a>' }
+    },
+    zh: {
+      'meta.title': '實驗室首頁 | Lab Home',
+      'meta.description': '實驗室首頁，包含最新消息、教授簡介、研究領域、論文著述、實驗室成員、畢業學長姊、照片分享、相關連結。',
+      brand: '實驗室首頁',
+      nav: { news:'最新消息', professor:'教授簡介', research:'研究領域', publications:'發表論文', members:'實驗室成員', alumni:'畢業學長姊', photos:'照片分享', links:'相關連結' },
+      hero: {
+        title: '歡迎來到本實驗室',
+        blurb: '我們專注於先進材料、光子學與元件研究。在此可查閱最新<strong>消息</strong>、認識<strong>教授</strong>、了解<strong>研究方向</strong>、瀏覽<strong>論文發表</strong>、查看<strong>成員</strong>與<strong>畢業學長姊</strong>、欣賞<strong>照片集</strong>，以及實用<strong>連結</strong>。',
+        cta1: '探索研究', cta2: '瀏覽論文',
+        highlightTitle: '最新焦點',
+        highlightText: '在此放置重點訊息，例如「我們的太赫茲光偵測研究登上 <em>Advanced Materials</em>」。'
+      },
+      news: { title:'最新消息', item1:'2025-09-15：恭喜團隊論文被期刊錄用！', item2:'2025-08-30：歡迎新加入的研究生！' },
+      quick: {
+        title:'快速連結', profTitle:'教授簡介', profText:'教授簡介與聯絡方式。', resTitle:'研究方向', resText:'目前進行中的研究計畫與重點。', pubTitle:'論文著述', pubText:'期刊論文、會議論文與數據集。', more:'更多 →'
+      },
+      footer: { copyright:'© <span id="year"></span> 實驗室名稱 · 版權所有', contact:'聯絡信箱：<a href="mailto:lab@example.com">lab@example.com</a>' }
+    }
+  };
+
+  function setLang(lang){
+    const dict = I18N[lang] || I18N.zh;
+    // html lang
+    document.documentElement.lang = lang === 'en' ? 'en' : 'zh-Hant';
+    // title
+    const titleEl = document.querySelector('[data-i18n="meta.title"]');
+    if (titleEl) titleEl.textContent = dict['meta.title'];
+    // meta description
+    const descEl = document.querySelector('meta[name="description"]');
+    if (descEl) descEl.setAttribute('content', dict['meta.description']);
+
+    // text nodes
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const key = el.getAttribute('data-i18n');
+      const parts = key.split('.');
+      let val = dict;
+      parts.forEach(p=>{ if (val) val = val[p]; });
+      if (typeof val === 'string') {
+        el.innerHTML = val;
+      }
+    });
+
+    // update nav labels individually
+    const nav = dict.nav;
+    if (nav){
+      const map = {
+        'News.html': nav.news,
+        'Professor.html': nav.professor,
+        'Research.html': nav.research,
+        'Publications.html': nav.publications,
+        'members.html': nav.members,
+        'Alumni.html': nav.alumni,
+        'Photos.html': nav.photos,
+        'Links.html': nav.links,
+      };
+      document.querySelectorAll('.nav-links a[href]').forEach(a=>{
+        const href = a.getAttribute('href');
+        if (map[href]) a.textContent = map[href];
+      });
+    }
+
+    // language toggle UI state
+    document.getElementById('btn-en').classList.toggle('active', lang==='en');
+    document.getElementById('btn-zh').classList.toggle('active', lang!=='en');
+    document.getElementById('btn-en').setAttribute('aria-pressed', String(lang==='en'));
+    document.getElementById('btn-zh').setAttribute('aria-pressed', String(lang!=='en'));
+
+    // persist & reflect in URL
+    try { localStorage.setItem('lang', lang); } catch(_){}
+    const url = new URL(window.location);
+    url.searchParams.set('lang', lang);
+    window.history.replaceState({}, '', url);
+  }
+
+  function initLang(){
+    const urlLang = new URLSearchParams(window.location.search).get('lang');
+    const saved = (()=>{ try { return localStorage.getItem('lang'); } catch(_){ return null; } })();
+    const lang = urlLang || saved || (navigator.language||'').startsWith('zh') ? 'zh' : 'en';
+    setLang(lang);
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    // year
+    const y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
+    // init language
+    initLang();
+    // bind buttons
+    document.getElementById('btn-en').addEventListener('click', ()=>setLang('en'));
+    document.getElementById('btn-zh').addEventListener('click', ()=>setLang('zh'));
+
+    // --- Smoke tests ---
+    console.assert(document.getElementById('year'), 'Test: #year exists');
+    console.assert(document.getElementById('btn-en') && document.getElementById('btn-zh'), 'Test: language buttons exist');
+    console.assert(document.querySelector('[data-i18n="hero.title"]'), 'Test: hero title has i18n');
+  });
+  </script>
+</body>
+</html>
